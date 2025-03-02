@@ -5,7 +5,13 @@ vim.wo.number = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.laststatus = 3
 
-vim.opt.guifont = "Hack Nerd Font:h14"
+if vim.fn.has('mac') == 1 then
+  vim.opt.guifont = "Hack Nerd Font:h14"
+elseif vim.fn.has('linux') == 1 then
+  vim.opt.guifont = "Hack Nerd Font:h14"
+elseif vim.fn.has('win64') == 1 then
+  vim.opt.guifont = "HackGen Console NF:h12"
+end
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
@@ -39,6 +45,8 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 
 vim.keymap.set('n', '<C-j>', 'gj')
 vim.keymap.set('n', '<C-k>', 'gk')
+
+vim.keymap.set('n','<Esc><Esc>', '<cmd>nohlsearch<CR><Esc>' )
 
 require("lazy").setup({
   {
