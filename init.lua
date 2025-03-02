@@ -40,6 +40,7 @@ vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 vim.keymap.set('n', '<C-j>', 'gj')
 vim.keymap.set('n', '<C-k>', 'gk')
 
+vim.keymap.set('n', '<leader>nt', ':NvimTreeToggle<CR>')
 vim.keymap.set('n','<Esc><Esc>', '<cmd>nohlsearch<CR><Esc>' )
 
 require("lazy").setup({
