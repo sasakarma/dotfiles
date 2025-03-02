@@ -54,6 +54,24 @@ require("lazy").setup({
     end,
   },
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
+  {
       "nvim-tree/nvim-tree.lua",
       config = function()
           require("nvim-tree").setup()
@@ -122,21 +140,23 @@ require("lazy").setup({
     end,
   },
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    "sindrets/diffview.nvim"
+  },
+  {
+    "voldikss/vim-floaterm",
     keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "Buffer Local Keymaps (which-key)",
-      },
+      { "<leader>gt", function()
+        if os_name == "Linux" or os_name == "Darwin" then
+          vim.cmd("FloatermNew lazygit")
+        else
+          vim.notify("lazygit is not supported on Windows.", vim.log.levels.WARN)
+        end
+      end, desc = "Floaterm Lazygit" },
     },
-  }
+    config = function()
+      require("floaterm").setup({
+        -- floatterm の設定 (必要に応じて)
+      })
+    end
+  },
 })
