@@ -45,12 +45,14 @@ vim.keymap.set('n','<Esc><Esc>', '<cmd>nohlsearch<CR><Esc>' )
 
 require("lazy").setup({
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    opts = {},
     config = function()
-      vim.cmd[[colorscheme tokyonight]]
+      require("catppuccin").setup {
+        flavour = "frappe"
+      }
+      vim.cmd[[colorscheme catppuccin]]
     end,
   },
   {
@@ -146,12 +148,8 @@ require("lazy").setup({
     "voldikss/vim-floaterm",
     keys = {
       { "<leader>gt", function()
-        if os_name == "Linux" or os_name == "Darwin" then
-          vim.cmd("FloatermNew lazygit")
-        else
-          vim.notify("lazygit is not supported on Windows.", vim.log.levels.WARN)
-        end
-      end, desc = "Floaterm Lazygit" },
+        vim.cmd("FloatermNew lazygit")
+        end, desc = "Floaterm Lazygit" },
     },
     config = function()
       require("floaterm").setup({
