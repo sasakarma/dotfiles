@@ -1,16 +1,15 @@
 #!/bin/bash
 
-repo_path="." 
+repo_path="./nvim" 
 
 neovim_config_path="$HOME/.config/nvim"
 
 # シンボリックリンクを作成
-mkdir -p "$neovim_config_path"
-if [ ! -e "$neovim_config_path/init.lua" ]; then
-  echo "$repo_path/init.lua -> $neovim_config_path/init.lua"
-  ln -s "$(readlink -f $repo_path/init.lua)" "$neovim_config_path/init.lua"
+if [ ! -e "$neovim_config_path" ]; then
+  echo "$repo_path -> $neovim_config_path"
+  ln -s "$(readlink -f $repo_path)" "$neovim_config_path"
 else
-  echo "$neovim_config_path/init.lua already exsits!"
+  echo "$neovim_config_path already exsits!"
 fi
 
 if [ ! -e "$HOME/.tmux.conf" ]; then
