@@ -4,9 +4,6 @@ $repoPath = ".\nvim"
 $neovimConfigPath = "$env:LOCALAPPDATA\nvim"
 
 # シンボリックリンクを作成
-if (-not (Test-Path $neovimConfigPath)) {
-  New-Item -ItemType Directory -Path $neovimConfigPath
-}
 
 if (-not (Test-Path "$neovimConfigPath")) {
   echo "$repoPath -> $neovimConfigPath"
