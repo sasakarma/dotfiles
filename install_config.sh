@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo_path="./nvim" 
+repo_path="." 
 
 neovim_config_path="$HOME/.config/nvim"
 
