@@ -152,16 +152,13 @@ require("lazy").setup({
     "sindrets/diffview.nvim"
   },
   {
-    "voldikss/vim-floaterm",
+    "akinsho/toggleterm.nvim",
     keys = {
-      { "<leader>gt", function()
-        vim.cmd("FloatermNew lazygit")
-        end, desc = "Floaterm Lazygit" },
+      { "<leader>ft", "<cmd>ToggleTerm direction=float<cr>", desc = "Float Terminal" },
+      { "<leader>gt", "<cmd>ToggleTerm direction=float cmd=lazygit<cr>", desc = "Lazygit" },
     },
     config = function()
-      require("floaterm").setup({
-        -- floatterm の設定 (必要に応じて)
-      })
+      require("toggleterm").setup()
     end
   },
   require('plugins.lsp_config'),
