@@ -161,6 +161,21 @@ require("lazy").setup({
       require("toggleterm").setup()
     end
   },
+  {
+    "echasnovski/mini.diff",
+    config = function()
+      local diff = require("mini.diff")
+      diff.setup({
+        -- Disabled by default
+        source = diff.gen_source.none(),
+      })
+    end,
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" }
+  },
+  require('plugins.codecompanion'),
   require('plugins.lsp_config'),
   {
     "hrsh7th/nvim-cmp",
